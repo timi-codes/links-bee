@@ -35,7 +35,7 @@ const LongTimeLinkItem = React.forwardRef((props, ref) => {
         ref={ref}
         flexDirection="column"
         role="radio"
-        backgroundColor={isChecked ? "white" : "#F6F6F6"}
+        backgroundColor={isChecked ? "white" : "#F5F7FF"}
         aria-checked={isChecked}
         p="0px"
         m="0px"
@@ -43,7 +43,7 @@ const LongTimeLinkItem = React.forwardRef((props, ref) => {
         height="5.7rem"
         fontWeight="normal"
         lineHeight="1.4rem"
-        _focus={{ backgroundColor: isChecked ? "white" : "#F6F6F6" }}
+        _focus={{ backgroundColor: isChecked ? "white" : "#F5F7FF" }}
         width="100%"
       >
           <Box as={Flex} justifyContent="space-between" alignItems="center" width="100%">
@@ -52,9 +52,9 @@ const LongTimeLinkItem = React.forwardRef((props, ref) => {
                 <Link href="/" color="#2F82FF" fontSize="14px">{link.shortenedLink}</Link>
               </Box>
               <Flex direction="column" justifyContent="space-between" px="1rem" alignItems="flex-end">
-                <Text fontSize="12px" color="#A3A4AE">{link.date}</Text>
+                <Text fontSize="12px" color="#BDC3DA">{link.date}</Text>
                 <Flex mt="1.5rem">
-                  <Text fontSize="12px" color="#A3A4AE" fontWeight={600}>{link.clicks}</Text>
+                  <Text fontSize="12px" color="#BDC3DA" fontWeight={600}>{link.clicks}</Text>
                   <Image src="/stat.svg" alt="Links Bee Logo" justifySelf="center" ml="4px" />
                 </Flex>
               </Flex>

@@ -15,8 +15,10 @@ import {
   Text,
   RadioButtonGroup,
   Heading,
+  useDisclosure
 } from '@chakra-ui/core'
 import LongTimeLinkItem from '../component/LongTimeLinkItem';
+import CreateLinkDrawer from '../component/CreateLinkDrawer';
 
 const links = [
   {
@@ -45,8 +47,8 @@ const DetailView = () => {
     <Box>
       <Flex px="1.5rem" py="1rem"justifyContent="space-between">
         <Box>
-          <Heading as="h4" fontSize="18px" color="#444966" fontWeight={500}>Health Worker Survey Link</Heading>
-          <Text fontSize="13px" color="#A3A4AE">CREATED APR 17, 1:46 PM</Text>
+          <Heading as="h4" fontSize="17px" color="#333750" fontWeight={500}>Health Worker Survey Link</Heading>
+          <Text fontSize="12px" color="#A3A4AE">CREATED APR 17, 1:46 PM</Text>
         </Box>
         <Box mt="3px">
           <Button
@@ -93,7 +95,11 @@ const DetailView = () => {
 }
 
 const Home = () => {
+
+  const { isOpen: isCreateLinkOpen, onOpen: onCreateLinkOpen, onClose: onCreateLinkClose } = useDisclosure();
+
   return (
+    <>
     <Box as={Flex} flexDirection="column" justifyContent="space-between" backgroundColor="#F9ED43" height="100vh">
       <Head>
         <title>Links.Bee 🐝🐝🐝</title>
@@ -103,7 +109,18 @@ const Home = () => {
         <Box width="100px"/>
         <Image src="/logo.svg" alt="Links Bee Logo" height="40px" justifySelf="center" ml="10rem"/>
         <Box as={Flex}>
-          <Button fontWeight="bold" fontSize="14px" backgroundColor="#2F82FF" color="white" width="140px" height="2.8rem" rounded="15px 0px 15px 0" mr="2rem" _hover={{ backgroundColor: "#1C71F1" }}>CREATE</Button>
+            <Button
+              fontWeight="bold"
+              fontSize="14px"
+              backgroundColor="#2F82FF"
+              color="white"
+              width="140px"
+              height="2.8rem"
+              rounded="15px 0px 15px 0"
+              mr="2rem"
+              _hover={{ backgroundColor: "#1C71F1" }}
+              onClick={onCreateLinkOpen}
+            >CREATE</Button>
           <Menu justifySelf="center">
             <MenuButton
               as={Button}
@@ -128,7 +145,7 @@ const Home = () => {
       </Flex>
       <Flex direction="column">
         <Box as={Grid} maxWidth="1050px" backgroundColor="white" margin="0 auto" height="70vh" gridTemplateColumns="340px 1fr">
-          <Box height="100%" backgroundColor="#F6F6F6">
+          <Box height="100%" backgroundColor="#F5F7FF">
             <Box px="1rem" py="1.63rem"><Text fontWeight="bold" ml="1rem" color="#444966" >3 Links</Text></Box>
             <Divider height="1px" m="0px"/>
             <RadioButtonGroup
@@ -150,7 +167,9 @@ const Home = () => {
         <Link>Support.</Link>
         <Link>Term of Use</Link>
       </Flex>
-    </Box>
+      </Box>
+      <CreateLinkDrawer isOpen={isCreateLinkOpen} onClose={onCreateLinkClose}/>
+    </>
   )
 };
 
