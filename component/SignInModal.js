@@ -32,17 +32,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
               alignItems="center"
                     >
                       <Image src="/logo.svg" alt="Links Bee Logo" height="37px" justifySelf="center" mb="3rem" ml="25%"/>
-
-                        <FormControl mb="1rem">
-                            <FormLabel fontSize="13px">Full name / Company</FormLabel>
-                            <Input
-                                type="text"
-                                placeholder="Full Name"
-                                border="1px solid black"
-                                fontSize="13px"
-                                _focus={{ border: '1px solid #1F1F1F' }}
-                            />
-                        </FormControl>
                         <FormControl mb="1rem">
                             <FormLabel fontSize="13px">Email Address</FormLabel>
                             <Input
@@ -80,7 +69,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
                         <Text textAlign="center" fontSize="14px">
                             Don't have account?{' '}
                             <Link fontWeight="bold" ml="2px">
-                                Sign up
+                                Log In
                             </Link>
                         </Text>
                     </ModalBody>

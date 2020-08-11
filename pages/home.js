@@ -85,7 +85,7 @@ const DetailView = () => {
           </Button>
         </Box>
       </Flex>
-      <Divider height="1px" m="0px" opacity="0.3" />
+      <Divider height="1px" m="0px" opacity="0.4" />
       <Box px="2rem" py="1rem">
         <Text fontSize="13px" color="black" fontWeight={600}>🔗 ORIGINAL LINK -   <Link href="/" color="#938040" fontSize="14px" fontWeight="normal">https://docs.google.com/forms/d/e/1FAIpQLSe7eO3-dx-WnbvAOPHhm8QCauxT8HB-z9p6LHdXZbSv-JDJPA/formResponse</Link></Text>
 
