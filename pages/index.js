@@ -6,9 +6,12 @@ import {
   Stack,
   Button,
   Input,
-  Link
+  Link,
+  useDisclosure
 } from '@chakra-ui/core'
 import ShortTimeLinkItem from '../component/ShortTimeLinkItem';
+import SignInModal from '../component/SignInModal';
+import SignUpModal from '../component/SignUpModal';
 
 
 const links = [
@@ -23,18 +26,23 @@ const links = [
 ]
 
 const Home = () => {
+  const { isOpen: isLoginOpen, onOpen: onLoginOpen, onClose: onLoginClose } = useDisclosure();
+  const { isOpen: isSignupOpen, onOpen: onSignupOpen, onClose: onSignupClose } = useDisclosure();
+
   return (
+    <Box>
+
     <Box as={Flex} flexDirection="column" justifyContent="space-between" backgroundColor="#F9ED43" height="100vh">
       <Head>
         <title>Links.Bee - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Stack as={Flex} isInline spacing={14} flexDirection="row" justifyContent="flex-end" marginRight="2rem" padding="1rem">
-        <Button fontWeight="bold" backgroundColor="transparent">Login</Button>
-        <Button fontWeight="bold" backgroundColor="transparent">Signup</Button>
+        <Button fontWeight="bold" backgroundColor="transparent" onClick={onLoginOpen}>Login</Button>
+        <Button fontWeight="bold" backgroundColor="transparent" onClick={onSignupOpen}>Signup</Button>
       </Stack>
       <Flex alignItems="center" justifyContent="center" textAlign="center">
-        <Box as={Flex} flexDirection="column" width="45%" margin="0 auto" mt="-2rem">
+        <Box as={Flex} flexDirection="column" width="40%" margin="0 auto" mt="-2rem">
           <img src="/logo.svg" alt="Links Bee Logo" className="logo" />
           <Text fontSize={20} width="75%" margin="1.3rem auto 2rem auto" textAlign="center">Build and protect your brand using powerful, recognizable short links.</Text>
           <Box as={Flex} height="4.5rem" backgroundColor="white" flexDirection="row" alignItems="center" px="1rem">
@@ -68,7 +76,11 @@ const Home = () => {
         <Link>Support.</Link>
         <Link>Term of Use</Link>
       </Flex>
-    </Box>
+      </Box>
+      <SignInModal isOpen={isLoginOpen} onClose={onLoginClose} />
+      <SignUpModal isOpen={isSignupOpen} onClose={onSignupClose} />
+  </Box>
+
   )
 };
 
