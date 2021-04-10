@@ -26,17 +26,16 @@ const server = new ApolloServer({
     }),
     permissions,
   ),
-  tracing: config.apollo.tracing,
-  engine: {
-    apiKey: config.apollo.apikey,
-    variant: config.apollo.variant,
-    reportSchema: true,
+  apollo: {
+    key: `service:${config.apollo.apikey}`,
+    graphVariant: config.apollo.variant,
+    graphId: config.apollo.graphId,
   },
   cache,
   dataSources: () => ({
-    accounts: new datasources.Accounts(config),
-    mailgun: new datasources.Mailgun(config.mailgun),
-    token: new datasources.Token(),
+    links: new datasources.Links(config),
+    // mailgun: new datasources.Mailgun(config.mailgun),
+    // token: new datasources.Token(),
   }),
   formatError: (err) => {
     if (err.extensions.code !== 'UNAUTHENTICATED' && err.extensions.code !== 'BAD_USER_INPUT') {
@@ -44,29 +43,32 @@ const server = new ApolloServer({
     }
     return err;
   },
-  context: async ({ req }) => {
-    const tokenSource = new datasources.Token();
-    tokenSource.initialize({ cache });
-    let auth = null;
-    let authErrorMessage = null;
-    try {
-      auth = await tokenSource.getAuth({ req });
-      if (!auth) {
-        authErrorMessage = 'jwt expired';
-      }
-    } catch (error) {
-      authErrorMessage = error.message;
-    }
+  context: async ({ req }) =>
+  // const tokenSource = new datasources.Token();
+  // tokenSource.initialize({ cache });
+  // let auth = null;
+  // let authErrorMessage = null;
+  // try {
+  //   auth = await tokenSource.getAuth({ req });
+  //   if (!auth) {
+  //     authErrorMessage = 'jwt expired';
+  //   }
+  // } catch (error) {
+  //   authErrorMessage = error.message;
+  // }
 
-    return ({
+    ({
       app,
-      auth,
-      authErrorMessage,
+      // auth,
+      // authErrorMessage,
       prisma,
-    });
-  },
+    })
+  ,
 });
 
+(async () => {
+  await server.start();
+})();
 server.applyMiddleware({ app });
 
 async function shutdown(serverApp) {

@@ -1,5 +1,7 @@
 const { ApolloError, AuthenticationError } = require('apollo-server-express');
-const { rule, shield, not, or } = require('graphql-shield');
+const {
+  rule, shield, not, or,
+} = require('graphql-shield');
 const { isEmpty } = require('lodash');
 
 const isAuthenticated = rule()(
@@ -17,15 +19,11 @@ const isAuthenticated = rule()(
 const permissions = shield({
   Query: {
     '*': isAuthenticated,
+    getShortLinks: or(isAuthenticated, not(isAuthenticated)),
   },
   Mutation: {
     '*': isAuthenticated,
-    generateBee: or(isAuthenticated, not(isAuthenticated)),
-    createUser: not(isAuthenticated),
-    login: not(isAuthenticated),
-    requestPasswordReset: not(isAuthenticated),
-    validatePasswordResetRequest: not(isAuthenticated),
-    resetPassword: not(isAuthenticated),
+    shortenLink: or(isAuthenticated, not(isAuthenticated)),
   },
 }, {
   fallbackError: (error, parent, args, context, info) => {

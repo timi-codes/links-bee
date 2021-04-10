@@ -1,0 +1,18 @@
+
+
+type Link {
+    id: ID
+    original_url: URL
+    bee_url: String
+    visits: Int
+    created_at: Date
+    updated_at: Date
+}
+
+type Query {
+    getShortLinks: [Link]
+}
+
+type Mutation {
+    shortenLink(url: URL!): Link
+}

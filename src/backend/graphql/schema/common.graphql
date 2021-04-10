@@ -1,0 +1,7 @@
+scalar Date
+scalar URL
+
+type BooleanResponse {
+  status: Boolean
+  message: String
+}
