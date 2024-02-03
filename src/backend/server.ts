@@ -6,7 +6,7 @@ import http from 'http';
 import cors from 'cors';
 
 import config from './config';
-// import prisma from './database';
+import prisma from './database';
 import { typeDefs, resolvers } from './graphql';
 
 interface MyContext {
@@ -28,14 +28,17 @@ server.start().then(()=>{
     cors<cors.CorsRequest>(),
     express.json(),
     expressMiddleware(server, {
-      context: async ({ req }) => ({ token: req.headers.token }),
+      context: async ({ req }) => ({ 
+        token: req.headers.token, 
+        prisma 
+      }),
     }),
   );
 })
 
 async function shutdown(serverApp : http.Server) {
   console.info('Received kill signal, shutting down gracefully'); // eslint-disable-line no-console
-  // await prisma.$disconnect();
+  await prisma.$disconnect();
   serverApp.close();
   return process.exit();
 }
