@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "target": "es2022",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "types": ["node"],
+    },
+    "exclude": ["__tests__/**/*.test.ts", "dist"]
+}

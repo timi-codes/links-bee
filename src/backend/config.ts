@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   port: process.env.PORT || 4000,
   ttlInSeconds: process.env.CACHE_TTL || 0,
   frontend_url: process.env.FRONTEND_URL,
