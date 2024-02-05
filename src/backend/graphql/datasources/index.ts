@@ -1,1 +1,1 @@
-export {default as Links} from './link.datasource';
+export {default as LinkDataSource} from './link.datasource';

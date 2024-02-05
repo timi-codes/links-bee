@@ -1,4 +1,4 @@
-// @ts-ignore
+/* eslint-disable */
 import { useMemo } from 'react';
 import { ApolloClient, HttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';

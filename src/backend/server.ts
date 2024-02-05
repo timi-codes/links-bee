@@ -4,12 +4,13 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import express, { Request } from 'express';
 import http from 'http';
 import cors from 'cors';
-import config from './config';
-import prisma from './database';
+
 import { typeDefs, resolvers } from './graphql';
-import LinkDataSource from './graphql/datasources/link.datasource';
 import { PrismaClient } from '@prisma/client';
 
+import { LinkDataSource } from './graphql/datasources';
+import config from './config';
+import prisma from './database';
 export interface AppContext {
   prisma: PrismaClient;
   dataSources: {
