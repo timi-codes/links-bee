@@ -1,0 +1,2 @@
+//TODO: Handle database error in a clean way
+//TODO: Implement codegen for typescript and enforce types and linter
