@@ -1,4 +1,6 @@
-module.exports = {
+import { AppContext } from "../../../server";
+
+export default {
   Query: {
     getShortLinks: async () => [
       {
@@ -11,13 +13,12 @@ module.exports = {
     ],
   },
   Mutation: {
-    shortenLink: async (parent, { url }, { dataSources }) => {
+    shortenLink: async (_, { url }, { dataSources }: AppContext) => {
       try {
-        return await dataSources.links.shorten({ url });
+        return await dataSources.link.shorten({ url });
       } catch (error) {
         return error;
       }
     },
-  },
-
-};
+  }
+}

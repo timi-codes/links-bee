@@ -1,8 +1,9 @@
+// @ts-ignore
 import { useMemo } from 'react';
-import { getCookie, destroyCookie } from 'utils/cookie';
 import { ApolloClient, HttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import config from 'config';
+import { getCookie, destroyCookie } from '../../utils/cookie';
 import { cache } from './cache';
 
 const { API_URL, AUTH_TOKEN } = config;

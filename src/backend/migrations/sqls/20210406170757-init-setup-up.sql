@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS "user" (
     password VARCHAR(255) NOT NULL,
     last_login TIMESTAMP DEFAULT NOW() NOT NULL,
     created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+    updated_at TIMESTAMP DEFAULT NOW() NOT NULL,
     PRIMARY KEY (id),
     UNIQUE (email)
 );

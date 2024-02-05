@@ -1,5 +1,9 @@
-scalar Date
+scalar DateTime
 scalar URL
+scalar EmailAddress
+scalar Date
+
+
 
 type BooleanResponse {
   status: Boolean

@@ -1,12 +1,14 @@
 
 
 type Link {
-    id: ID
+    bee_id: String
+    name: String
     original_url: URL
-    bee_url: String
-    visits: Int
+    expires_at: Date
+    last_visited_at: Date
     created_at: Date
     updated_at: Date
+    owner: User
 }
 
 type Query {
