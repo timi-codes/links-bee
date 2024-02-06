@@ -4,6 +4,9 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import express, { Request } from 'express';
 import http from 'http';
 import cors from 'cors';
+import Keyv from "keyv";
+import { KeyvAdapter } from "@apollo/utils.keyvadapter";
+import Redis, { CommonRedisOptions } from "ioredis";
 
 import { typeDefs, resolvers } from './graphql';
 import { PrismaClient } from '@prisma/client';
@@ -11,6 +14,7 @@ import { PrismaClient } from '@prisma/client';
 import { LinkDataSource } from './graphql/datasources';
 import config from './config';
 import prisma from './database';
+import KeyvRedis from '@keyv/redis';
 export interface AppContext {
   prisma: PrismaClient;
   dataSources: {
@@ -34,12 +38,19 @@ class ContextValue {
 
 const app = express();
 const httpServer = http.createServer(app);
+const redis = new Redis(config.redis as CommonRedisOptions)
+
 let server = null;
 
 const main = async()=>{
   server = new ApolloServer<AppContext & BaseContext>({
     typeDefs, 
     resolvers,
+    cache: new KeyvAdapter(
+      new Keyv({ 
+        store: new KeyvRedis(redis)
+      })
+    ),
     introspection: true,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });

@@ -15,6 +15,7 @@ export default {
   Mutation: {
     shortenLink: async (_, { url }, { dataSources }: AppContext) => {
       try {
+        //TODO: Add link to a boom filter so that it's returned when another user tries to create same link.
         return await dataSources.link.shorten({ url });
       } catch (error) {
         return error;
