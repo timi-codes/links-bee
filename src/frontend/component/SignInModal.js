@@ -13,7 +13,7 @@ import {
   FormControl,
   ModalBody,
   ModalCloseButton
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 const SignUpModal = ({ isOpen, onClose }) => {
   return (

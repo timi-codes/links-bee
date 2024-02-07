@@ -16,7 +16,7 @@ import {
   RadioButtonGroup,
   Heading,
   useDisclosure
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import LongTimeLinkItem from '../component/LongTimeLinkItem';
 import CreateLinkDrawer from '../component/CreateLinkDrawer';
 

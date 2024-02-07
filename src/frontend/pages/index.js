@@ -9,7 +9,7 @@ import {
   Link,
   Image,
   useDisclosure
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 // import ShortTimeLinkItem from '../component/ShortTimeLinkItem';
 import SignInModal from '../component/SignInModal';
 import SignUpModal from '../component/SignUpModal';

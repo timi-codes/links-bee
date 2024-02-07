@@ -11,7 +11,7 @@ import {
   FormControl,
   FormLabel,
   Flex
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 const CreateLinkDrawer = ({ isOpen, onClose }) => {
   return (
