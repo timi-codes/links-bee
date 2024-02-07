@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Box, Flex, Image, Button, Link, Divider } from '@chakra-ui/core';
+import { Text, Box, Flex, Image, Button, Link, Divider } from '@chakra-ui/react';
 
 // const SelectionItem = React.forwardRef((props, ref) => {
 //   const { isChecked, isDisabled, value, ...rest } = props;

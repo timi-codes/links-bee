@@ -1,4 +1,4 @@
-import { Text, Box, Flex, Button, Link, Divider } from '@chakra-ui/core';
+import { Text, Box, Flex, Button, Link, Divider } from '@chakra-ui/react';
 
 const ShortTimeLinkItem = ({ link }) => {
   return (
