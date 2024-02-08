@@ -83,9 +83,10 @@ const Home = () => {
           <Flex direction={"column"} maxW="45rem" margin="auto"  >
             <Box textAlign="center" mb={8}>
               <Heading fontSize={46} lineHeight="110%">Your Brand's Shortcut to Success</Heading>
-              <Text fontSize={18} mt={3} >Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
+              <Text fontSize={16} mt={3} px={16} fontWeight={500} opacity={0.9}>Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
             </Box>
             <Stack direction="column" margin="0 auto" maxWidth="70%">
+            <Box height="3.5rem" backgroundColor="#313131" rounded="10px" mb="1rem"></Box>
               <Flex
                 height="3.5rem"
                 backgroundColor="white"
@@ -93,6 +94,7 @@ const Home = () => {
                 alignItems="center"
                 px="1rem"
               >
+
                 <Input
                   placeholder="Shorten your link"
                   border="0px solid transparent"
@@ -107,7 +109,7 @@ const Home = () => {
                   Shorten
                 </Button>
               </Flex>
-              <Flex height="9.8rem" backgroundColor="white" mt="1rem" rounded="10px" px="1rem" py="1rem">
+              <Flex direction="column" backgroundColor="white" mt="0.5rem" rounded="10px" px="0.4rem">
               {
                 links.map((link) => (
                   <ShortTimeLinkItem link={link} />
@@ -117,11 +119,11 @@ const Home = () => {
             </Stack>
           </Flex>
           <Flex justifyContent="space-between">
-            <Link>About Links.Bee</Link>
-            <Link>Contacts.</Link>
-            <Link>Pricing.</Link>
-            <Link>use API.</Link>
-            <Link>Term of Use</Link>
+            <Link fontWeight={600}>About Links.Bee</Link>
+            <Link fontWeight={600}>Contacts.</Link>
+            <Link fontWeight={600}>Pricing.</Link>
+            <Link fontWeight={600}>use API.</Link>
+            <Link fontWeight={600}>Term of Use</Link>
           </Flex>
         </Stack>
       </Box>
