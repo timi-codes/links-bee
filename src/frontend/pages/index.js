@@ -59,7 +59,7 @@ const Home = () => {
             <Image
               src="/logo.svg"
               alt="Links Bee Logo"
-              height="40px"
+              height="37px"
               className="logo"
             />
     
