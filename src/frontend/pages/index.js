@@ -7,12 +7,12 @@ import {
   Stack,
   Button,
   Input,
-  Link,
   Image,
   Heading,
   useDisclosure,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Link
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ShortTimeLinkItem from '../component/ShortTimeLinkItem';
@@ -50,12 +50,7 @@ const Home = () => {
         <title>Links.Bee - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box 
-        backgroundColor="#F9ED43"
-        height="100vh"
-        
-        
-      >
+      <Box backgroundColor="#F9ED43" height="100vh">
         <Stack maxWidth="2100px" margin="auto" flexDirection="column" justifyContent="space-between" height="100%" px="7rem" py="2rem">
           <Stack
             spacing={16}
@@ -86,7 +81,7 @@ const Home = () => {
               </Button>
             </Stack>
           </Stack>
-          <Flex direction={"column"} maxW="45rem" margin="auto"  >
+          <Flex direction={"column"} maxW="47rem" margin="auto"  >
             <Box textAlign="center" mb={8}>
               <Heading fontSize={46} lineHeight="110%">Your Brand's Shortcut to Success</Heading>
               <Text fontSize={16} mt={3} px={16} fontWeight={500} opacity={0.9}>Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
@@ -109,16 +104,16 @@ const Home = () => {
                 <Radio value='1' width="50%">URL Shortener</Radio>
                 <Radio value='2' width="50%">QR Code</Radio>
               </RadioGroup>
-              {/* <input type='radio' id="url" name="url" value="URL Shortener" />
-              <label for="url"></label> */}
-              {/*QR Code*/}
-              {/* <input type='radio' id="qrc" name="qrc" value="QR Code"/>
-              <label for="qrc">QR Code</label> */}
-              {/*Bio Page*/}
-              <Flex direction="row" alignItems="center" justifyContent="center">
-                <Text fontSize="13px">Bio Page </Text>
-                <ExternalLinkIcon ml={2} boxSize={3.5}/>
-              </Flex> 
+              <Link 
+                href='/bio'
+                _hover={{ color: "rgba(255, 255, 255, 0.7)" }}
+                isExternal
+              >
+                <Flex direction="row" alignItems="center" justifyContent="center" height="100%">
+                  <Text fontSize="13px">Bio Page </Text>
+                  <ExternalLinkIcon ml={2} boxSize={3.5}/>
+                </Flex>
+              </Link> 
             </Box>
               <Flex
                 height="3.5rem"
@@ -127,25 +122,25 @@ const Home = () => {
                 alignItems="center"
                 px="1rem"
               >
-
                 <Input
                   placeholder="Shorten your link"
                   border="0px solid transparent"
-                  _focus={{ border: '0px solid transparent' }}
+                  focusBorderColor="transparent"
+                  _focus={{ border: '0px solid transparent', outline: 0, border: 0 }}
                 />
                 <Button
                   backgroundColor="transparent"
                   color="#1F75EB"
-                  _hover={{ backgroundColor: 'transparent', outline: 0 }}
-                  _focus={{ backgroundColor: 'transparent', outline: 0 }}
+                  _hover={{ backgroundColor: 'transparent', outline: 0, border: 0, color: "#0C64DE" }}
+                  _focus={{ backgroundColor: 'transparent', outline: 0, border: 0  }}
                 >
                   Shorten
                 </Button>
               </Flex>
               <Flex direction="column" backgroundColor="white" mt="0.5rem" rounded="10px" px="0.4rem">
               {
-                links.map((link) => (
-                  <ShortTimeLinkItem link={link} />
+                links.map((link, index) => (
+                  <ShortTimeLinkItem key={index} link={link} />
                 ))
               }
               </Flex>

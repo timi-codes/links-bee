@@ -2,17 +2,16 @@ import { Text, Box, Flex, Button, Link, Divider } from '@chakra-ui/react';
 
 const ShortTimeLinkItem = ({ link }) => {
   return (
-    <Flex px="1rem" flexDirection="column">
-      <Box
-        as={Flex}
+    <Flex px="0.7rem" flexDirection="column">
+      <Flex
         justifyContent="space-between"
         alignItems="center"
         width="100%"
-        py="0.5rem"
+        py="1rem"
       >
-        <Text>{link.originalLink}</Text>
-        <Box>
-          <Link href="/" color="#938040">
+        <Text fontWeight={500} fontSize={14} mr={2}>{link.originalLink}</Text>
+        <>
+          <Link href="/" color="#938040" fontSize={14}>
             {link.shortenedLink}
           </Link>
           <Button
@@ -20,12 +19,16 @@ const ShortTimeLinkItem = ({ link }) => {
             color="#938040"
             _hover="transparent"
             ml="1rem"
-            rounded="5px"
+            fontSize={12}
+            borderRadius={20}
+            fontWeight={600}
+            height={7}
+            p={3}
           >
             Copy
           </Button>
-        </Box>
-      </Box>
+        </>
+      </Flex>
       <Divider height="1px" />
     </Flex>
   );

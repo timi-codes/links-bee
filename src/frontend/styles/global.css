@@ -85,6 +85,6 @@
 	outline: 2px solid transparent;
 }
 
-.tabs:has(:focus-visible)::after {
-	outline-color: red;
+.tabs-container:has(:focus-visible)::after {
+	outline-color: #1F75EB;
 }
