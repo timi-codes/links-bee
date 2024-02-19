@@ -1,0 +1,90 @@
+
+:root {
+    --radius: 8px;
+	--border: 4px;
+	--height: 48px;
+    --speed: 0.25s;
+}
+
+.tabs-container {
+    color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
+    font-weight: 500;
+    --ease: linear(
+        0, 0.1641 3.52%, 0.311 7.18%,
+        0.4413 10.99%, 0.5553 14.96%,
+        0.6539 19.12%, 0.738 23.5%,
+        0.8086 28.15%, 0.8662 33.12%,
+        0.9078 37.92%, 0.9405 43.12%,
+        0.965 48.84%, 0.9821 55.28%,
+        0.992 61.97%, 0.9976 70.09%, 1
+    )
+}
+
+.chakra-radio__control,
+.sr-only {
+    position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+.tabs-container:has(label[data-checked]:nth-of-type(1)) { --active: 0; }
+.tabs-container:has(label[data-checked]:nth-of-type(2)) { --active: 1; }
+.tabs-container:has(label[data-checked]:nth-of-type(3)) { --active: 2; }
+.tabs-container:has(label[data-checked]:nth-of-type(4)) { --active: 3; }
+
+.tabs .chakra-radio__label[data-checked] { 
+    --highlight: 1; 
+    color: black;
+    z-index: 5;
+    font-weight: 600;
+}
+
+.tabs:has(label:nth-of-type(2)) { --count: 2; }
+.tabs:has(label:nth-of-type(3)) { --count: 3; }
+.tabs:has(label:nth-of-type(4)) { --count: 4; }
+
+.tabs-container .chakra-radio__label {
+	cursor: pointer;
+	text-align: center;
+	height: 100%;
+    width: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+	border-radius: calc(var(--radius) - var(--border));
+	color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
+	transition: background, color;
+    transition-duration: 0.25s;
+    transition-timing-function: var(--ease, ease);
+}
+
+.chakra-radio__label:not([data-checked]):hover{
+	--highlight: 0.35;
+	background: hsl(0 0% 20%);
+}
+
+.tabs-container::after {
+	pointer-events: none;
+	content: "";
+	width: calc(100% / 3);
+	height: 100%;
+	background: white;
+	position: absolute;
+	border-radius: calc(var(--radius) - var(--border));
+	translate: calc(var(--active, 0) * 100%) 0;
+	transition: translate, outline-color;
+    transition-duration: var(--speed);
+    transition-timing-function: var(--ease, ease);
+	outline: 2px solid transparent;
+}
+
+.tabs:has(:focus-visible)::after {
+	outline-color: red;
+}

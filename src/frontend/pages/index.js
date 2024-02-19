@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import {
   Text,
@@ -9,8 +10,11 @@ import {
   Link,
   Image,
   Heading,
-  useDisclosure
+  useDisclosure,
+  Radio,
+  RadioGroup
 } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ShortTimeLinkItem from '../component/ShortTimeLinkItem';
 import SignInModal from '../component/SignInModal';
 import SignUpModal from '../component/SignUpModal';
@@ -37,6 +41,8 @@ const Home = () => {
     onOpen: onSignupOpen,
     onClose: onSignupClose
   } = useDisclosure();
+
+  const [value, setValue] = React.useState('1')
 
   return (
     <>
@@ -86,7 +92,34 @@ const Home = () => {
               <Text fontSize={16} mt={3} px={16} fontWeight={500} opacity={0.9}>Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
             </Box>
             <Stack direction="column" margin="0 auto" maxWidth="70%">
-            <Box height="3.5rem" backgroundColor="#313131" rounded="10px" mb="1rem"></Box>
+            <Box 
+              className='tabs-container'
+              display="grid"
+              gridAutoFlow="column"
+              gridAutoColumns="2fr 1fr"
+              position="relative"
+              backgroundColor="#313131" 
+              height="3.1rem" 
+              rounded="8px" 
+              border="6px solid #313131" 
+              mb="1rem"
+              justifyContent="space-between"
+            >
+              <RadioGroup className="tabs" as={Flex} onChange={setValue} value={value}>
+                <Radio value='1' width="50%">URL Shortener</Radio>
+                <Radio value='2' width="50%">QR Code</Radio>
+              </RadioGroup>
+              {/* <input type='radio' id="url" name="url" value="URL Shortener" />
+              <label for="url"></label> */}
+              {/*QR Code*/}
+              {/* <input type='radio' id="qrc" name="qrc" value="QR Code"/>
+              <label for="qrc">QR Code</label> */}
+              {/*Bio Page*/}
+              <Flex direction="row" alignItems="center" justifyContent="center">
+                <Text fontSize="13px">Bio Page </Text>
+                <ExternalLinkIcon ml={2} boxSize={3.5}/>
+              </Flex> 
+            </Box>
               <Flex
                 height="3.5rem"
                 backgroundColor="white"
