@@ -12,7 +12,8 @@ import {
   useDisclosure,
   Radio,
   RadioGroup,
-  Link
+  Link,
+  Divider
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ShortTimeLinkItem from '../component/ShortTimeLinkItem';
@@ -30,6 +31,25 @@ const links = [
   }
 ];
 
+
+const QRContainer = ()=>{
+  return (
+    <Flex px="0.7rem" py="1rem">
+      <Image src='./qrcode.png' height="6rem"/>
+      <Divider width="1px" orientation='vertical' mx={3}/>
+      <Flex direction="column" justifyContent="space-between">
+        <Box>
+          <Text fontWeight={500} fontSize={13} >We've also got you covered with a shortened URL. Let's keep things simple and fun! ☺️</Text>
+          <Link href="/" color="#938040" fontSize={14}>
+            https://links.bee/3gpB8O9
+          </Link>
+        </Box>
+        <Text fontWeight={500} fontSize={12} color="#089337" lineHeight="110%">Explore more QR Code features when you create and account</Text>
+      </Flex>
+    </Flex>
+  )
+}
+
 const Home = () => {
   const {
     isOpen: isLoginOpen,
@@ -42,7 +62,10 @@ const Home = () => {
     onClose: onSignupClose
   } = useDisclosure();
 
-  const [value, setValue] = React.useState('1')
+  const [tabIndex, setTabIndex] = React.useState('1')
+
+
+
 
   return (
     <>
@@ -100,7 +123,7 @@ const Home = () => {
               mb="1rem"
               justifyContent="space-between"
             >
-              <RadioGroup className="tabs" as={Flex} onChange={setValue} value={value}>
+              <RadioGroup className="tabs" as={Flex} onChange={setTabIndex} value={tabIndex}>
                 <Radio value='1' width="50%">URL Shortener</Radio>
                 <Radio value='2' width="50%">QR Code</Radio>
               </RadioGroup>
@@ -123,7 +146,7 @@ const Home = () => {
                 px="1rem"
               >
                 <Input
-                  placeholder="Shorten your link"
+                  placeholder={ tabIndex == "1" ? "Shorten your link" : "Enter a url"}
                   border="0px solid transparent"
                   focusBorderColor="transparent"
                   _focus={{ border: '0px solid transparent', outline: 0, border: 0 }}
@@ -134,15 +157,23 @@ const Home = () => {
                   _hover={{ backgroundColor: 'transparent', outline: 0, border: 0, color: "#0C64DE" }}
                   _focus={{ backgroundColor: 'transparent', outline: 0, border: 0  }}
                 >
-                  Shorten
+                  { tabIndex == 1 ? "Shorten" : "Generate"}
                 </Button>
               </Flex>
-              <Flex direction="column" backgroundColor="white" mt="0.5rem" rounded="10px" px="0.4rem">
-              {
-                links.map((link, index) => (
-                  <ShortTimeLinkItem key={index} link={link} />
-                ))
-              }
+              <Flex direction="column" backgroundColor="white" mt="0.5rem" rounded="10px" px="0.4rem" w="30rem" h="130px">
+                {
+                  tabIndex == "1" ? (
+                    <>
+                    {
+                      links.map((link, index) => (
+                        <ShortTimeLinkItem key={index} link={link} />
+                      ))
+                    }
+                  </>
+                  ) : (
+                    <QRContainer/>
+                  )
+                }
               </Flex>
             </Stack>
           </Flex>

@@ -7,7 +7,7 @@ const ShortTimeLinkItem = ({ link }) => {
         justifyContent="space-between"
         alignItems="center"
         width="100%"
-        py="1rem"
+        py="1.1rem"
       >
         <Text fontWeight={500} fontSize={14} mr={2}>{link.originalLink}</Text>
         <>
