@@ -1,6 +1,10 @@
-import { Text, Box, Flex, Button, Link, Divider } from '@chakra-ui/react';
+import { Text, Flex, Button, Link, Divider } from '@chakra-ui/react';
 
-const ShortTimeLinkItem = ({ link }) => {
+type Props = {
+  link: ILink
+}
+
+const ShortTimeLinkItem : React.FC<Props> = ({ link }) => {
   return (
     <Flex px="0.7rem" flexDirection="column">
       <Flex
@@ -9,10 +13,10 @@ const ShortTimeLinkItem = ({ link }) => {
         width="100%"
         py="1.1rem"
       >
-        <Text fontWeight={500} fontSize={14} mr={2}>{link.originalLink}</Text>
+        <Text fontWeight={500} fontSize={14} mr={2}>{link.original_url}</Text>
         <>
           <Link href="/" color="#938040" fontSize={14}>
-            {link.shortenedLink}
+            https://links.bee/{link.bee_id}
           </Link>
           <Button
             backgroundColor="rgba(255, 220, 100, 0.31)"

@@ -22,12 +22,24 @@ import SignUpModal from '../component/SignUpModal';
 
 const links = [
   {
-    originalLink: 'https://uk.godaddy.com',
-    shortenedLink: 'https://links.bee/3gpB8O9'
+    bee_id: "3gpB8O9",
+    name: "Godaddy UK",
+    original_url: "https://uk.godaddy.com",
+    expires_at: "",
+    last_visited_at: "",
+    created_at: "",
+    updated_at: "",
+    owner: null
   },
   {
-    originalLink: 'https://chakra-ui.com',
-    shortenedLink: 'https://links.bee/3gpB8O9'
+    bee_id: "3gpB8O9",
+    name: "Chakra UI",
+    original_url: "https://chakra-ui.com",
+    expires_at: "",
+    last_visited_at: "",
+    created_at: "",
+    updated_at: "",
+    owner: null
   }
 ];
 
