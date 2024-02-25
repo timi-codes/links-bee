@@ -8,7 +8,7 @@
     "start": "next start",
     "build:dev": "sh -ac '. .env.development && yarn build'",
     "lint": "yarn eslint . --fix",
-    "codegen": "graphql-codegen",
+    "codegen": "graphql-codegen -r ts-node/register --config codegen.ts",
     "codegen:watch": "graphql-codegen -w"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "husky": {
