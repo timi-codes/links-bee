@@ -76,8 +76,8 @@ const Home = () => {
         <title>Links.Bee - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box backgroundColor="#F9ED43" height="100vh" px="7rem" py="2rem">
-        <Stack maxWidth="2100px" margin="auto" flexDirection="column"  height="100%" >
+      <Box backgroundColor="#F9ED43" height="100vh" px={{ base: "1.4rem", lg: "7rem"}} py={{ base: "1rem", lg: "2rem"}}>
+        <Stack maxWidth={{ base: "100%", lg: "2100px"}} margin="auto" flexDirection="column"  height="100%" >
           <Stack
             spacing={16}
             flexDirection="row"
@@ -86,11 +86,11 @@ const Home = () => {
             <Image
               src="/logo.svg"
               alt="Links Bee Logo"
-              height="37px"
+              height={{ base: "32px", lg: "37px"}}
               className="logo"
             />
     
-            <Stack direction="row" spacing={6}>
+            <Stack direction="row" spacing={{ base:1, lg: 6}}>
               <Button
                 fontWeight="bold"
                 backgroundColor="transparent"
@@ -107,12 +107,12 @@ const Home = () => {
               </Button>
             </Stack>
           </Stack>
-          <Flex direction={"column"} maxW="47rem" margin="0 auto" marginTop="10rem">
+          <Flex direction={"column"} maxW={{ base: "94%", lg: "47rem" }} margin="0 auto" marginTop="10rem">
             <Box textAlign="center" mb={8}>
-              <Heading fontSize={46} lineHeight="110%">Your Brand's Shortcut to Success</Heading>
-              <Text fontSize={16} mt={3} px={16} fontWeight={500} opacity={0.9}>Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
+              <Heading fontSize={{ base: 34, lg: 46 }} lineHeight="110%">Your Brand's Shortcut to Success</Heading>
+              <Text fontSize={16} mt={3} px={{ base: 4, lg: 16}} fontWeight={500} opacity={0.9}>Build and protect your brand using powerful, recognizable short links. With Links.Bee unleash the full potential of your brand with ease. Simplify your online presence and stand out in the digital crowd.</Text>
             </Box>
-            <Stack direction="column" margin="0 auto" maxWidth="70%">
+            <Stack direction="column" margin="0 auto" maxWidth={{ base: "100%", lg: "30REM"}}>
               <Box 
                 className='tabs-container'
                 display="grid"
@@ -152,7 +152,7 @@ const Home = () => {
                 flexDirection="row"
                 alignItems="center"
                 px="1rem"
-                w="30rem"
+                w={{base: "100%", lg: "30rem"}}
               >
                 <Input
                   placeholder={ tabIndex === 1 ? "Shorten your link" : "Enter a url"}
@@ -172,7 +172,7 @@ const Home = () => {
                   { tabIndex == 1 ? "Shorten" : "Generate"}
                 </Button>
               </Flex>
-              <Flex direction="column" w="30rem">
+              <Flex direction="column" /**w="30rem"*/>
                   <Text fontSize={12} px={4} fontWeight="medium" textAlign="center" opacity={0.8}>
                     *** Sign up now for extended link lifespans! Note: Unregistered links expire after 7 days.
                   </Text>
