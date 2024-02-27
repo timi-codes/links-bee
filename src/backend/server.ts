@@ -1,16 +1,21 @@
+// import 'dotenv/config'
 import { ApolloServer, BaseContext } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express, { Request } from 'express';
 import http from 'http';
 import cors from 'cors';
-
 import { typeDefs, resolvers } from './graphql';
 import { PrismaClient } from '@prisma/client';
-
 import { LinkDataSource } from './graphql/datasources';
 import config from './config';
 import prisma from './database';
+import Redis, { CommonRedisOptions } from 'ioredis'
+import KeyvRedis from "@keyv/redis";
+import Keyv from "keyv";
+import { KeyvAdapter } from "@apollo/utils.keyvadapter";
+import ReBloom from './utils/bloom-filter';
+
 export interface AppContext {
   prisma: PrismaClient;
   dataSources: {
@@ -36,15 +41,26 @@ const app = express();
 const httpServer = http.createServer(app);
 let server = null;
 
+console.log(config.redis)
+// Configure Redis Bloom Filer with 1billion capacity
+const redis = new Redis(config.redis as CommonRedisOptions);
+const bf = new ReBloom(redis)
+bf.reserve("link-exists", 0.01, 1000000000).then(()=>{
+  console.log('🁜 Reserved Bloom Filter.');
+}); 
+
+
 const main = async()=>{
   server = new ApolloServer<AppContext & BaseContext>({
     typeDefs, 
     resolvers,
     introspection: true,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    cache: new KeyvAdapter(new Keyv({ store: new KeyvRedis(redis) })), 
   });
   
   await server.start()
+
   app.use(
     '/graphql',
     cors<cors.CorsRequest>(),

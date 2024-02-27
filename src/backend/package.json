@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "dotenv -- nodemon -e ts,graphql -x ts-node index.ts",
+    "dev": "nodemon -e ts,graphql -x ts-node -r dotenv/config index.ts dotenv_config_path=.env.local",
     "start": "node dist/index.js",
     "build": "rimraf dist && tsc",
     "local": "node -r dotenv/config index.js dotenv_config_path=.env.local",
@@ -32,18 +32,21 @@
   },
   "dependencies": {
     "@apollo/server": "^4.10.0",
+    "@apollo/utils.keyvadapter": "^3.1.0",
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.1",
+    "@keyv/redis": "^2.8.4",
     "@prisma/client": "^5.9.1",
     "cors": "^2.8.5",
     "db-migrate": "^0.11.14",
     "db-migrate-pg": "^1.5.2",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.5",
     "dotenv-cli": "^7.3.0",
     "express": "^4.18.2",
     "graphql": "^16.8.1",
-    "graphql-scalars": "^1.22.4",
+    "graphql-scalars": "^1.22.5",
     "graphql-shield": "^7.6.5",
+    "keyv": "^4.5.4",
     "supertest": "^6.3.4"
   },
   "devDependencies": {
